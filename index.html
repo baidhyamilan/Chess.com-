@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="game-header">
+      <h1>♔ Chess Game ♔</h1>
+      <p>Play Chess Online</p>
+    </div>
+    
+    <div class="game-wrapper">
+      <div class="sidebar left-sidebar">
+        <div class="player-info opponent">
+          <div class="player-name">Computer</div>
+          <div class="rating-selector">
+            <label for="computerRating">Rating:</label>
+            <select id="computerRating" onchange="changeComputerRating()">
+              <option value="800">800 - Beginner</option>
+              <option value="1200">1200 - Intermediate</option>
+              <option value="1600" selected>1600 - Advanced</option>
+              <option value="2000">2000 - Master</option>
+              <option value="2400">2400 - Grandmaster</option>
+            </select>
+          </div>
+        </div>
+        <div class="game-stats">
+          <div class="stat">
+            <span class="stat-label">Moves:</span>
+            <span class="stat-value" id="moveCount">1</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Status:</span>
+            <span class="stat-value" id="gameStatus">Your Turn</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="board-container">
+        <div class="board" id="chessBoard"></div>
+        <div class="coordinates">
+          <div class="files">
+            <span>a</span><span>b</span><span>c</span><span>d</span>
+            <span>e</span><span>f</span><span>g</span><span>h</span>
+          </div>
+          <div class="ranks">
+            <span>8</span><span>7</span><span>6</span><span>5</span>
+            <span>4</span><span>3</span><span>2</span><span>1</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidebar right-sidebar">
+        <div class="player-info">
+          <div class="player-name">You</div>
+          <div class="player-rating">1500</div>
+        </div>
+        <div class="game-controls">
+          <button class="btn btn-primary" onclick="resetGame()">New Game</button>
+          <button class="btn btn-secondary" onclick="undoMove()">Undo</button>
+          <button class="btn btn-secondary" onclick="resignGame()">Resign</button>
+        </div>
+        <div class="captured-pieces">
+          <div class="captured-title">Captured Pieces</div>
+          <div class="captured-white" id="capturedWhite"></div>
+          <div class="captured-black" id="capturedBlack"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="moves-history">
+      <h3>Move History</h3>
+      <div class="moves-list" id="movesList"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
